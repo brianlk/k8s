@@ -1,0 +1,52 @@
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: mysql2
+#  namespace: mysql
+#spec:
+#  type: NodePort
+#  ports:
+#  - port: 3306
+#    targetPort: 3306
+#    nodePort: 30337
+#  selector:
+#   app: mysql2
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql2
+  namespace: mysql
+spec:
+  serviceName: "mysql2"
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mysql2
+  template:
+    metadata:
+      labels:
+        app: mysql2
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: local-vol
+          mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: local-vol
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "local-storage"
+        resources:
+          requests:
+            storage: 10Gi

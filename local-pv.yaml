@@ -1,0 +1,144 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv1
+spec:
+  capacity:
+    storage: 80Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /dev/vg1/lv1
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - worker0.clus1.oc.example
+          - worker1.clus1.oc.example
+          - worker2.clus1.oc.example
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv2
+spec:
+  capacity:
+    storage: 80Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /dev/vg1/lv2
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - worker0.clus1.oc.example
+          - worker1.clus1.oc.example
+          - worker2.clus1.oc.example
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv4
+spec:
+  capacity:
+    storage: 80Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /dev/vg1/lv4
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - worker0.clus1.oc.example
+          - worker1.clus1.oc.example
+          - worker2.clus1.oc.example
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv7
+spec:
+  capacity:
+    storage: 80Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /dev/vg1/lv7
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - worker0.clus1.oc.example
+          - worker1.clus1.oc.example
+          - worker2.clus1.oc.example
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv8
+spec:
+  capacity:
+    storage: 80Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /dev/vg1/lv8
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - worker0.clus1.oc.example
+          - worker1.clus1.oc.example
+          - worker2.clus1.oc.example
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv9
+spec:
+  capacity:
+    storage: 160Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /dev/vg1/lv9
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - worker0.clus1.oc.example
+          - worker1.clus1.oc.example
+          - worker2.clus1.oc.example
+
